@@ -14,6 +14,13 @@ let usuarios = [{
     "edad": 25,
 }]
 
+// <--- agregando metodos http 'GET' 'POST' 'PUT' 'DELETE' ---->
+
+// metodo GET
+app.get('/usuarios' , (req,res) =>{
+    res.json(usuarios)
+})
+
 // haciendo que el servidor este a la escucha en el puerto 3000
 app.listen(port , () => {
     console.log(`Servidor a la escucha en el puerto: ${port}`)
