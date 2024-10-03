@@ -67,6 +67,11 @@ app.delete('/usuarios/:id' , (req,res) => {
     res.send('El usuario ha sido eliminado')
 })
 
+// Creando un manejo de errores e implementando un codigo de estado 404 para las rutas no encontradas
+app.use((req, res) => {
+    res.status(404).send('Lo sentimos, ruta no encontrada.');
+});
+
 // haciendo que el servidor este a la escucha en el puerto 3000
 app.listen(port , () => {
     console.log(`Servidor a la escucha en el puerto: ${port}`)
