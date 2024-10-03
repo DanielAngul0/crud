@@ -36,6 +36,16 @@ app.post('/usuarios' , (req,res) => {
     
 })
 
+// metodo PUT
+app.put('/usuarios/:id', (req, res) => {
+
+    const idUsuarios = parseInt(req.params.id) //Adquiere el id del usuario como numero entero
+
+    usuarios = usuarios.map(user => user.id === idUsuarios ? { ...user, ...req.body } : user) //compara el id del usuario con los id's del array, en caso de coincidir cambia los datos actuales por los nuevos
+
+    res.send('Usuario actualizado') //envia un mensaje de confirmacion sobre la actualizacion
+})
+
 // haciendo que el servidor este a la escucha en el puerto 3000
 app.listen(port , () => {
     console.log(`Servidor a la escucha en el puerto: ${port}`)
