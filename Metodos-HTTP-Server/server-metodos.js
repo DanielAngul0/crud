@@ -26,24 +26,45 @@ app.get('/usuarios' , (req,res) =>{
 
 // metodo POST
 app.post('/usuarios' , (req,res) => {
-    console.log("Se ha creado el usuario:",req.body)  //Muestra en la consola el cuerpo de la solicitud
 
-    const newUser = {...req.body, id: usuarios.length +1 } // 1. Crear un nuevo usuario con los datos recibidos en req.body, y añadirle un id que es la longitud actual del array usuario + 1.
+    // Muestra en la consola el cuerpo de la solicitud
+    console.log("Se ha creado el usuario:",req.body)  
 
-    usuarios.push(newUser) // 2. Agregar el nuevo usuario al array usuario.
+    // 1. Crear un nuevo usuario con los datos recibidos en req.body, y añadirle un id que es la longitud actual del array usuario + 1.
+    const newUser = {...req.body, id: usuarios.length +1 } 
 
-    res.send('Se ha creado un usuario') // 3. Enviar una respuesta al cliente indicando que el usuario ha sido creado.
+    // 2. Agregar el nuevo usuario al array usuario.
+    usuarios.push(newUser) 
+
+    // 3. Enviar una respuesta al cliente indicando que el usuario ha sido creado.
+    res.send('Se ha creado un usuario') 
     
 })
 
 // metodo PUT
 app.put('/usuarios/:id', (req, res) => {
 
-    const idUsuarios = parseInt(req.params.id) //Adquiere el id del usuario como numero entero
+    // Adquiere el id del usuario como numero entero
+    const idUsuario = parseInt(req.params.id) 
 
-    usuarios = usuarios.map(user => user.id === idUsuarios ? { ...user, ...req.body } : user) //compara el id del usuario con los id's del array, en caso de coincidir cambia los datos actuales por los nuevos
+    // compara el id del usuario con los id's del array, en caso de coincidir cambia los datos actuales por los nuevos
+    usuarios = usuarios.map(user => user.id === idUsuario ? { ...user, ...req.body } : user) 
 
-    res.send('Usuario actualizado') //envia un mensaje de confirmacion sobre la actualizacion
+    // envia un mensaje de confirmacion sobre la actualizacion
+    res.send('El usuario ha sido actualizado') 
+})
+
+// metodo DELETE
+app.delete('/usuarios/:id' , (req,res) => {
+
+    // Adquiere el id del usuario como numero entero
+    const idUsuario = parseInt(req.params.id)
+
+    // Recorrera y excluira todos los id's del array exceptuando al id del usuario que sera eliminado  
+    usuarios = usuarios.filter(user => user.id !== idUsuario)
+
+    // mensaje confirmando la eliminacion del usuario
+    res.send('El usuario ha sido eliminado')
 })
 
 // haciendo que el servidor este a la escucha en el puerto 3000
