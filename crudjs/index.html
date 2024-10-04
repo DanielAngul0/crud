@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Básico</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>CRUD de Usuarios</h1>
+
+    <div class="form-container">
+      <input type="text" id="name" placeholder="Nombre" />
+      <button id="addUserBtn">Agregar Usuario</button>
+    </div>
+
+    <table id="userTable">
+      <!-- Encabezado de la tabla, define las columnas: ID, Nombre, y Acciones -->
+      <thead>
+        <!-- Encabezado de la tabla, define las columnas: ID, Nombre, y Acciones -->
+        <tr>
+          <!-- Columna para mostrar el identificador único de cada usuario -->
+          <th>ID</th>
+          <!-- Columna para mostrar el nombre del usuario -->
+          <th>Nombre</th>
+          <!-- Columna para las acciones disponibles: Editar y Eliminar -->
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="userList">
+        <!-- Usuarios se agregan aquí -->
+      </tbody>
+    </table>
+
+    <script src="crud.js"></script>
+  </body>
+</html>
